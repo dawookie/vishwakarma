@@ -28,6 +28,10 @@ module "ignition_kube_config" {
   }
 }
 
+module "ignition_fix_packet_drop" {
+  source  = "../../fix-packet-drop"
+}
+
 data "ignition_config" "main" {
   files = ["${compact(concat(
     module.ignition_docker.files,
@@ -36,6 +40,7 @@ data "ignition_config" "main" {
     module.ignition_update_ca_certificates.files,
     module.ignition_kubelet.files,
     module.ignition_kube_config.files,
+    module.ignition_fix_packet_drop.files,
     var.extra_ignition_file_ids,
   ))}"]
 
@@ -46,6 +51,7 @@ data "ignition_config" "main" {
     module.ignition_update_ca_certificates.systemd_units,
     module.ignition_kubelet.systemd_units,
     module.ignition_kube_config.systemd_units,
+    module.ignition_fix_packet_drop.systemd_units,
     var.extra_ignition_systemd_unit_ids,
   ))}"]
 }
