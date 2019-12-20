@@ -46,7 +46,7 @@ module "ignition_kubelet" {
 }
 
 module "ignition_fix_packet_drop" {
-  source  = "../../fix-packet-drop"
+  source  = "../../ignitions/fix-packet-drop"
 }
 
 data "ignition_config" "main" {

@@ -29,7 +29,7 @@ module "ignition_kube_config" {
 }
 
 module "ignition_fix_packet_drop" {
-  source  = "../../fix-packet-drop"
+  source  = "../../ignitions/fix-packet-drop"
 }
 
 data "ignition_config" "main" {
